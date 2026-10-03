@@ -1,3 +1,4 @@
+import app.models
 from fastapi import FastAPI
 from app.db.database import test_connection
 from app.api.documents import router as documents_router
