@@ -16,7 +16,20 @@ SessionLocal = sessionmaker(
 
 
 class Base(DeclarativeBase):
-    pass
+    pass 
+    
+    
+    
+    
+    
+    
+def get_db():
+    db = SessionLocal()
+#will add logging here to document db session attempts
+    try:
+        yield db
+    finally:
+        db.close()
 
 
 def test_connection():

@@ -1,5 +1,6 @@
 from app.db.database import Base
 from app.models.document import Document
+from app.models.document_chunk import DocumentChunk
 
 from logging.config import fileConfig
 
