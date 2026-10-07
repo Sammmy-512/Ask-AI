@@ -1,6 +1,7 @@
 from sqlalchemy import ForeignKey, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.db.database import Base
+from pgvector.sqlalchemy import Vector
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -27,7 +28,13 @@ class DocumentChunk(Base):
     chunk_index: Mapped[int] = mapped_column(
         nullable=False
     )
+    embedding: Mapped[list[float] | None] = mapped_column(
+        Vector(384),
+        nullable=True
+    )
 
     document: Mapped["Document"] = relationship(
         back_populates="chunks"
     )
+
+    
