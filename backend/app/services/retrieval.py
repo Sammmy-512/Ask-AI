@@ -1,7 +1,9 @@
 from sqlalchemy.orm import Session
-
 from app.models.document_chunk import DocumentChunk
 from app.services.embeddings import create_embedding
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def retrieve_chunks(
@@ -28,4 +30,14 @@ def retrieve_chunks(
         .all()
     )
 
+
+
+
+    logger.info(
+    "Retrieved %d chunks for document_id=%d",
+    len(chunks),
+    document_id
+    )
+
+    
     return chunks

@@ -4,6 +4,6 @@ model = SentenceTransformer("all-MiniLM-L6-v2")
 
 
 def create_embedding(text: str) -> list[float]:
-    embedding = model.encode(text)
+    embedding = model.encode(text, show_progress_bar = False)
 
     return embedding.tolist()
